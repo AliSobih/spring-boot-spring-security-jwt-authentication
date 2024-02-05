@@ -23,3 +23,5 @@ When a new request comes, we verify the existence of this token, then verify the
     - getting information with token 200 ok will return.
    
     - ![Screenshot 2024-01-24 095355](https://github.com/AliSobih/spring-boot-spring-security-jwt-authentication/assets/43109825/7e6f7637-cca9-4509-a6c0-e3ecd1ca73ad)
+## ERD Diagram
+  - ![image](https://github.com/AliSobih/spring-boot-spring-security-jwt-authentication/assets/43109825/22169499-e4fe-4760-b6ad-4fb0c8bb1169)

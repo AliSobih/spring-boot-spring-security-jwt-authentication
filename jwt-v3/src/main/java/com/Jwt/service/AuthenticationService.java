@@ -25,12 +25,16 @@ public class AuthenticationService {
     private final UserDetailsService userDetailsService;
     private final TokenRepository tokenRepository;
     public AuthenticationResponse register(RegisterRequest request) {
+        if (userRepo.existsByEmail(request.getEmail())) {
+            throw new RuntimeException("this email already exist");
+        }
         User user = User.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
+                .isActive(true)
                 .build();
         userRepo.save(user);
         String jwtToken = jwtService.generateToken(user);

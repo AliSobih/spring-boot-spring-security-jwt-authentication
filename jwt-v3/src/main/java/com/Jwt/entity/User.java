@@ -23,6 +23,7 @@ public class User implements UserDetails {
     private String lastName;
     private String email;
     private String password;
+    private boolean isActive = true;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Token> tokens = new HashSet<>();
@@ -42,7 +43,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority(role.name()));
+        return Collections.singleton(new SimpleGrantedAuthority("ROLE_" + role.name()));
     }
 
     @Override
@@ -72,6 +73,6 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return isActive;
     }
 }

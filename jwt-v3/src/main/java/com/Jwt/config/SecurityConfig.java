@@ -30,6 +30,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         auth -> auth
                                 .requestMatchers("/api/auth/**").permitAll() // Allow access to authentication endpoints
+//                                .requestMatchers("/user/Convert-to-admin", "user/reset-password").hasAnyRole("ADMIN", "USER")
                                 .requestMatchers("/user/**").hasRole("ADMIN") // Only allow ADMIN role to access /user/** endpoints
                                 .anyRequest().authenticated()
                 )
